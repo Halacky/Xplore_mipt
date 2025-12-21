@@ -116,7 +116,6 @@ class LLMBasedEligibilityEvaluator:
 
         final_trace: LLMCallTrace = result["final_trace"]
 
-        # Полная проверка результата
         parsed = self._final_validator.validate(final_trace.raw_response)
         if parsed is None:
             parsed = json_repairer.repair(final_trace.raw_response, expected_type="object")
@@ -140,7 +139,6 @@ class LLMBasedEligibilityEvaluator:
                 feature_id = p.get("feature_id")
                 feature_name = p.get("feature_name")
 
-                # значение признака — пробуем несколько ключей
                 if "feature_value" in p:
                     feature_value = p.get("feature_value")
                 else:
@@ -152,14 +150,12 @@ class LLMBasedEligibilityEvaluator:
                     or p.get("feature_type")
                 )
 
-                # спаны признака
                 feature_spans = (
                     p.get("feature_evidence_spans")
                     or p.get("evidence_spans")
                     or []
                 )
 
-                # критерий может быть вложен в поле criterion
                 crit_obj = p.get("criterion", {})
                 criterion_id = p.get("criterion_id") or crit_obj.get("id")
                 criterion_type = (
