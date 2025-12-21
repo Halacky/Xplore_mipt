@@ -1,3 +1,7 @@
 xplore_env/
 data/
 eda_results/
+__pycache__/
+examples/
+.env
+logs/

@@ -1,0 +1,271 @@
+
+.saved-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  color: #102a43;
+}
+
+.saved-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.saved-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.saved-subtitle {
+  margin: 4px 0 0;
+  color: #6b7b93;
+  font-size: 14px;
+}
+
+/* Dashboard */
+
+.saved-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e5e9f0;
+}
+
+.dashboard-title {
+  font-size: 13px;
+  color: #6b7b93;
+  margin-bottom: 6px;
+}
+
+.dashboard-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: #102a43;
+}
+
+.dashboard-bar {
+  margin-top: 8px;
+  width: 100%;
+  height: 6px;
+  background-color: #edf2f7;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.dashboard-bar-valid {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+/* Pills */
+
+.dashboard-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.pill-included {
+  background-color: #ecfdf3;
+  color: #166534;
+}
+
+.pill-excluded {
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+
+.pill-unknown {
+  background-color: #eef2ff;
+  color: #4338ca;
+}
+
+/* Tabs */
+
+.saved-tabs {
+  display: inline-flex;
+  border-radius: 999px;
+  background-color: #edf2f7;
+  padding: 2px;
+  margin-bottom: 16px;
+}
+
+.saved-tabs button {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 999px;
+  color: #4a5568;
+}
+
+.saved-tabs button.active {
+  background: #ffffff;
+  color: #0f8fee;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+}
+
+/* Export buttons */
+
+.saved-export-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Common button styles from main app */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.btn-small {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #0f8fee;
+  border: 1px solid #cbd5e1;
+}
+
+.btn-secondary:hover {
+  background-color: #f1f5f9;
+}
+
+.btn-outline {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+}
+
+.btn-outline:hover {
+  background-color: #f8fafc;
+}
+
+/* Table */
+
+.saved-content h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.saved-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.saved-table thead {
+  background: #f9fafb;
+}
+
+.saved-table th,
+.saved-table td {
+  padding: 8px 10px;
+  font-size: 13px;
+  text-align: left;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.saved-table th {
+  font-weight: 600;
+  color: #64748b;
+}
+
+.saved-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Stats table */
+
+.stats-block {
+  margin-top: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  border: 1px solid #e5e9f0;
+}
+
+.stats-block h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.stats-table th,
+.stats-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.stats-table th {
+  text-align: left;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Re-eval block */
+
+.reeval-result {
+  margin-top: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+}
+
+/* Error */
+
+.error-message {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  margin-bottom: 12px;
+}

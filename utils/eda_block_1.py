@@ -30,9 +30,10 @@ def load_data():
     
     # Load data (assuming file is named 'clinical_trials.csv')
     # If separator is different, specify it in the sep parameter
-    df = pd.read_csv('/home/kirill/projects_2/folium/Xplore/data/Batch 1 with GroundTruth - Sheet1 (1).csv', sep=',')
+    df = DatasetCleaner().validate_and_clean('/home/kirill/projects_2/folium/Xplore/data/Batch 1 with GroundTruth - Sheet1 (3).csv')
+    df.to_csv('/home/kirill/projects_2/folium/Xplore/data/clear_data.csv')
     print(f"Dataset loaded. Size: {df.shape[0]} rows, {df.shape[1]} columns")
-    
+    print(df['expert_eligibility'].unique())
     # Save dataset info to file
     with open(f"{output_dir}/dataset_info.txt", "w") as f:
         f.write(f"Dataset size: {df.shape[0]} rows, {df.shape[1]} columns\n")
@@ -84,6 +85,58 @@ def basic_analysis(df):
     
     return df
 
+
+class DatasetCleaner:
+
+    # basic checking and processing
+    @staticmethod
+    def validate_and_clean(path, fill_method="auto"):
+        df = pd.read_csv(path)
+        # clean up column names
+        df.columns = df.columns.str.replace(r'\nstring', '', regex=True)
+
+        # delete full empty lines
+        df = df[~df.isna().all(axis=1)]
+
+        # delete full empty columns
+        df = df.dropna(axis=1, how="all")
+
+        # correct types
+        for col in df.columns:
+            # try to convert to a number
+            try:
+                df[col] = pd.to_numeric(df[col])
+            except:
+                pass
+
+        # fill the gaps
+        if fill_method == "auto":
+            for col in df.columns:
+                if df[col].dtype.kind in "biufc":  # num
+                    df[col] = df[col].fillna(df[col].median())
+                else:  # string
+                    df[col] = df[col].fillna("unknown")
+
+        elif fill_method == "median":
+            df = df.fillna(df.median(numeric_only=True))
+        elif fill_method == "mean":
+            df = df.fillna(df.mean(numeric_only=True))
+        elif fill_method == "zero":
+            df = df.fillna(0)
+        elif fill_method == "unknown":
+            df = df.fillna("unknown")
+        else:
+            raise ValueError("Unsupported fill method")
+
+        return df
+
+    # save the result
+    @staticmethod
+    def save(df, path_csv=None, path_parquet=None):
+        if path_csv:
+            df.to_csv(path_csv, index=False)
+        if path_parquet:
+            df.to_parquet(path_parquet, index=False)
 
 # ============================================================================
 # MODULE 3: UNIQUENESS AND DUPLICATES ANALYSIS

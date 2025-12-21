@@ -1,0 +1,38 @@
+# Build tools
+setuptools==69.0.2
+
+# FastAPI and server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.23
+alembic==1.12.1
+
+# Data processing
+pandas==2.1.4  # Updated version with Python 3.12 support
+numpy==1.26.3  # Updated version with Python 3.12 support
+
+# Pydantic
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# PDF processing
+pypdf2==3.0.1
+pdfplumber==0.10.3
+
+# File handling
+python-dotenv==1.0.0
+aiofiles==23.2.1
+
+# Visualization (for EDA)
+matplotlib==3.8.2
+seaborn==0.13.0
+
+# Optional: LLM providers
+openai==2.12.0
+anthropic==0.7.7
+
+prometheus-client
+requests

@@ -1,18 +1,15 @@
-"""
-Feature Extraction Pipeline:
-1. Запрос критериев для протоколов
-2. NLP/LLM для извлечения признаков из текста
-3. Извлечение сырых данных (таблицы, анализы)
-4. Построение недостающих признаков ML-моделями
-"""
+# nlp/feature_extractor.py
+from typing import List, Dict, Any
 
-class FeatureExtractor:
-    def __init__(self, knowledge_base):
-        self.knowledge_base = knowledge_base
+from nlp.extraction.patient_features import PatientFeatureExtractor, AtomicPatientFeature
+from nlp.extraction.trial_criteria import TrialCriteriaExtractor
+from storage.models.patient import PatientRecord
+from storage.models.trial import TrialProtocol
 
-    def extract_features(self, patient_raw, protocol_ids):
-        # TODO: запрос требований к признакам
-        # TODO: NLP + LLM
-        # TODO: Structured features
-        # TODO: ML/derived features
-        return {}
+
+# Re-export or define higher-level interfaces here if needed
+__all__ = [
+    "PatientFeatureExtractor",
+    "AtomicPatientFeature",
+    "TrialCriteriaExtractor",
+]
